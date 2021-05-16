@@ -6,14 +6,26 @@ class Walker{
  }
  
  void render(){
-    //x += (float)gen.nextGaussian();
-    //y += (float)gen.nextGaussian();
+    x+=monteCarlo();
+    y+=monteCarlo();
     constrainXandY(width/2,width-1,0,height-1);
   }
   
-  //float monteCarlo(){
-    
-  //}
+ float monteCarlo(){
+  boolean stop = false;
+  int count = 0;
+  while(!stop && count <1000){
+    float r1  = (float)random(1);
+    float r2 = (float)random(1);
+    float y = r1 *r1;
+    if(r2<y){
+      stop = true;
+      return r1;
+    }
+    count++;
+  }
+  return 0f;
+}
  
  void create(){
     stroke(0);
